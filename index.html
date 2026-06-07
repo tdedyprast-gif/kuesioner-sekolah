@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kuesioner Literasi Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f2e8d8;
+            padding: 40px 20px;
+            color: #4f4131;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .header {
+            background: rgba(226, 204, 173, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            color: #3f3324;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(79, 59, 33, 0.12);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .section {
+            background: #fff7ee;
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(79, 59, 33, 0.08);
+        }
+
+        .section h2 {
+            color: #8c6e45;
+            margin-bottom: 10px;
+        }
+
+        .section p.desc {
+            color: #6e5b45;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .sub-title {
+            background: linear-gradient(90deg, #c9b18f, #a58a62);
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 14px;
+            margin: 25px 0 18px;
+            font-weight: 600;
+        }
+
+        .question {
+            padding: 20px;
+            border: 1px solid #e1d4c0;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            transition: all .3s ease;
+            background: #fffdf7;
+        }
+
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 59, 33, 0.08);
+        }
+
+        .question p {
+            margin-bottom: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #554634;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .option {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .option input {
+            display: none;
+        }
+
+        .option label {
+            display: block;
+            padding: 12px;
+            border-radius: 12px;
+            background: #f5e8d7;
+            cursor: pointer;
+            transition: all .25s ease;
+            border: 2px solid transparent;
+            font-size: 14px;
+            color: #4f4131;
+        }
+
+        .option input:checked + label {
+            background: linear-gradient(135deg, #b4976b, #8c6a44);
+            color: #fff;
+            border-color: #7f6647;
+        }
+
+        .legend {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #6e5b45;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .submit-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #b89f76, #8c6e42);
+            color: white;
+            border: none;
+            padding: 16px 34px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+        }
+
+        .footer {
+            text-align: center;
+            color: #7a6649;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        @media(max-width:768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="kuesionerForm" action="https://script.google.com/macros/s/AKfycbzwTDBI35g-Abq04NvMlNF5F4EP1czUKzV7zHJvbgdP6mBDMEJ-QdLTeXz_53FKpowU/exec" method="post" target="hidden_iframe">
+        <div class="container">
+            <div class="header">
+                <h1>Kuesioner Penilaian Kebijakan dan Infrastruktur AI Sekolah</h1>
+                <p>
+                    Kuesioner ini mengukur kesiapan sekolah dalam menyediakan sarana, kebijakan, pengembangan SDM,
+                    dan strategi terkait penggunaan teknologi digital dan AI untuk pembelajaran.
+                    Jawab setiap pernyataan berdasarkan kondisi sekolah Anda.
+                </p>
+                <div style="margin-top:20px;">
+                    <div style="margin-top:20px;">
+                        <label style="display:block;margin-bottom:8px;font-weight:600;">Nama Responden</label>
+                        <input id="nama" name="nama" placeholder="Masukkan nama Anda"
+                            style="width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;" type="text" />
+                    </div>
+                    <div style="margin-top:20px;">
+                        <label style="display:block;margin-bottom:8px;font-weight:600;">Asal Sekolah</label>
+                        <input id="asal_sekolah" name="asal_sekolah" placeholder="Masukkan asal sekolah Anda"
+                            style="width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;" type="text" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Ketersediaan Sarana Pendukung</h2>
+                <p class="desc">Memeriksa kesiapan infrastruktur teknis dan fasilitas pendukung bagi pembelajaran AI di sekolah.</p>
+
+                <div class="sub-title">Kualitas Konektivitas</div>
+                <div class="question">
+                    <p>1. Sekolah memiliki koneksi internet dengan bandwidth yang memadai untuk mendukung penggunaan aplikasi AI secara di seluruh kelas.</p>
+                    <div class="options">
+                        <div class="option"><input id="q1_1" name="q1" type="radio" value="1" /><label for="q1_1">STS</label></div>
+                        <div class="option"><input id="q1_2" name="q1" type="radio" value="2" /><label for="q1_2">TS</label></div>
+                        <div class="option"><input id="q1_3" name="q1" type="radio" value="3" /><label for="q1_3">N</label></div>
+                        <div class="option"><input id="q1_4" name="q1" type="radio" value="4" /><label for="q1_4">S</label></div>
+                        <div class="option"><input id="q1_5" name="q1" type="radio" value="5" /><label for="q1_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Aksesibilitas Perangkat</div>
+                <div class="question">
+                    <p>2. Rasio jumlah perangkat keras (PC/Laptop/Tablet) yang tersedia di laboratorium atau perpustakaan sebanding dengan jumlah siswa per rombongan belajar.</p>
+                    <div class="options">
+                        <div class="option"><input id="q2_1" name="q2" type="radio" value="1" /><label for="q2_1">STS</label></div>
+                        <div class="option"><input id="q2_2" name="q2" type="radio" value="2" /><label for="q2_2">TS</label></div>
+                        <div class="option"><input id="q2_3" name="q2" type="radio" value="3" /><label for="q2_3">N</label></div>
+                        <div class="option"><input id="q2_4" name="q2" type="radio" value="4" /><label for="q2_4">S</label></div>
+                        <div class="option"><input id="q2_5" name="q2" type="radio" value="5" /><label for="q2_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Stabilitas Daya</div>
+                <div class="question">
+                    <p>3. Sekolah memiliki sistem pendukung kelistrikan (UPS/Genset) yang stabil untuk menjamin keberlangsungan pembelajaran digital saat terjadi gangguan daya.</p>
+                    <div class="options">
+                        <div class="option"><input id="q3_1" name="q3" type="radio" value="1" /><label for="q3_1">STS</label></div>
+                        <div class="option"><input id="q3_2" name="q3" type="radio" value="2" /><label for="q3_2">TS</label></div>
+                        <div class="option"><input id="q3_3" name="q3" type="radio" value="3" /><label for="q3_3">N</label></div>
+                        <div class="option"><input id="q3_4" name="q3" type="radio" value="4" /><label for="q3_4">S</label></div>
+                        <div class="option"><input id="q3_5" name="q3" type="radio" value="5" /><label for="q3_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Lisensi & Perangkat Lunak</div>
+                <div class="question">
+                    <p>4. Sekolah menyediakan atau mengizinkan akses ke platform AI dan perangkat lunak pendukung literasi digital tanpa hambatan pemblokiran (firewall) yang berlebihan.</p>
+                    <div class="options">
+                        <div class="option"><input id="q4_1" name="q4" type="radio" value="1" /><label for="q4_1">STS</label></div>
+                        <div class="option"><input id="q4_2" name="q4" type="radio" value="2" /><label for="q4_2">TS</label></div>
+                        <div class="option"><input id="q4_3" name="q4" type="radio" value="3" /><label for="q4_3">N</label></div>
+                        <div class="option"><input id="q4_4" name="q4" type="radio" value="4" /><label for="q4_4">S</label></div>
+                        <div class="option"><input id="q4_5" name="q4" type="radio" value="5" /><label for="q4_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Keamanan Data</div>
+                <div class="question">
+                    <p>5. Infrastruktur digital sekolah memiliki protokol keamanan siber untuk melindungi data pribadi siswa saat berinteraksi dengan platform AI.</p>
+                    <div class="options">
+                        <div class="option"><input id="q5_1" name="q5" type="radio" value="1" /><label for="q5_1">STS</label></div>
+                        <div class="option"><input id="q5_2" name="q5" type="radio" value="2" /><label for="q5_2">TS</label></div>
+                        <div class="option"><input id="q5_3" name="q5" type="radio" value="3" /><label for="q5_3">N</label></div>
+                        <div class="option"><input id="q5_4" name="q5" type="radio" value="4" /><label for="q5_4">S</label></div>
+                        <div class="option"><input id="q5_5" name="q5" type="radio" value="5" /><label for="q5_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Dukungan Perawatan</div>
+                <div class="question">
+                    <p>6. Terdapat jadwal pemeliharaan rutin (maintenance) untuk memastikan semua perangkat keras dalam kondisi prima bagi pembelajaran.</p>
+                    <div class="options">
+                        <div class="option"><input id="q6_1" name="q6" type="radio" value="1" /><label for="q6_1">STS</label></div>
+                        <div class="option"><input id="q6_2" name="q6" type="radio" value="2" /><label for="q6_2">TS</label></div>
+                        <div class="option"><input id="q6_3" name="q6" type="radio" value="3" /><label for="q6_3">N</label></div>
+                        <div class="option"><input id="q6_4" name="q6" type="radio" value="4" /><label for="q6_4">S</label></div>
+                        <div class="option"><input id="q6_5" name="q6" type="radio" value="5" /><label for="q6_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Fasilitas Multimedia</div>
+                <div class="question">
+                    <p>7. Tersedia ruang kelas atau laboratorium khusus yang mendukung pembelajaran literasi multimoda (audio-visual) secara interaktif.</p>
+                    <div class="options">
+                        <div class="option"><input id="q7_1" name="q7" type="radio" value="1" /><label for="q7_1">STS</label></div>
+                        <div class="option"><input id="q7_2" name="q7" type="radio" value="2" /><label for="q7_2">TS</label></div>
+                        <div class="option"><input id="q7_3" name="q7" type="radio" value="3" /><label for="q7_3">N</label></div>
+                        <div class="option"><input id="q7_4" name="q7" type="radio" value="4" /><label for="q7_4">S</label></div>
+                        <div class="option"><input id="q7_5" name="q7" type="radio" value="5" /><label for="q7_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Dukungan Kebijakan Kurikulum</h2>
+                <p class="desc">Menilai apakah kebijakan kurikulum sekolah mendukung integrasi AI dan literasi digital.</p>
+
+                <div class="sub-title">Kesesuaian Visi</div>
+                <div class="question">
+                    <p>8. Sekolah memiliki dokumen perencanaan yang secara eksplisit mencantumkan integrasi AI/Teknologi sebagai prioritas pengembangan kurikulum.</p>
+                    <div class="options">
+                        <div class="option"><input id="q8_1" name="q8" type="radio" value="1" /><label for="q8_1">STS</label></div>
+                        <div class="option"><input id="q8_2" name="q8" type="radio" value="2" /><label for="q8_2">TS</label></div>
+                        <div class="option"><input id="q8_3" name="q8" type="radio" value="3" /><label for="q8_3">N</label></div>
+                        <div class="option"><input id="q8_4" name="q8" type="radio" value="4" /><label for="q8_4">S</label></div>
+                        <div class="option"><input id="q8_5" name="q8" type="radio" value="5" /><label for="q8_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Fleksibilitas Struktur</div>
+                <div class="question">
+                    <p>9. Struktur kurikulum di sekolah memberikan waktu (jam pelajaran) yang cukup bagi guru untuk bereksperimen dengan alat AI dalam pembelajaran.</p>
+                    <div class="options">
+                        <div class="option"><input id="q9_1" name="q9" type="radio" value="1" /><label for="q9_1">STS</label></div>
+                        <div class="option"><input id="q9_2" name="q9" type="radio" value="2" /><label for="q9_2">TS</label></div>
+                        <div class="option"><input id="q9_3" name="q9" type="radio" value="3" /><label for="q9_3">N</label></div>
+                        <div class="option"><input id="q9_4" name="q9" type="radio" value="4" /><label for="q9_4">S</label></div>
+                        <div class="option"><input id="q9_5" name="q9" type="radio" value="5" /><label for="q9_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Regulasi Penggunaan</div>
+                <div class="question">
+                    <p>10. Sekolah telah menerbitkan panduan atau Standar Operasional Prosedur (SOP) mengenai penggunaan perangkat digital dan AI di lingkungan kelas.</p>
+                    <div class="options">
+                        <div class="option"><input id="q10_1" name="q10" type="radio" value="1" /><label for="q10_1">STS</label></div>
+                        <div class="option"><input id="q10_2" name="q10" type="radio" value="2" /><label for="q10_2">TS</label></div>
+                        <div class="option"><input id="q10_3" name="q10" type="radio" value="3" /><label for="q10_3">N</label></div>
+                        <div class="option"><input id="q10_4" name="q10" type="radio" value="4" /><label for="q10_4">S</label></div>
+                        <div class="option"><input id="q10_5" name="q10" type="radio" value="5" /><label for="q10_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Sistem Penilaian</div>
+                <div class="question">
+                    <p>11. Kebijakan penilaian di sekolah sudah mengakomodasi produk belajar berbasis digital (seperti portofolio digital atau karya berbasis AI).</p>
+                    <div class="options">
+                        <div class="option"><input id="q11_1" name="q11" type="radio" value="1" /><label for="q11_1">STS</label></div>
+                        <div class="option"><input id="q11_2" name="q11" type="radio" value="2" /><label for="q11_2">TS</label></div>
+                        <div class="option"><input id="q11_3" name="q11" type="radio" value="3" /><label for="q11_3">N</label></div>
+                        <div class="option"><input id="q11_4" name="q11" type="radio" value="4" /><label for="q11_4">S</label></div>
+                        <div class="option"><input id="q11_5" name="q11" type="radio" value="5" /><label for="q11_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Kolaborasi Eksternal</div>
+                <div class="question">
+                    <p>12. Sekolah menjalin kemitraan dengan pihak luar (universitas/industri teknologi) untuk mendukung implementasi kurikulum berbasis literasi digital.</p>
+                    <div class="options">
+                        <div class="option"><input id="q12_1" name="q12" type="radio" value="1" /><label for="q12_1">STS</label></div>
+                        <div class="option"><input id="q12_2" name="q12" type="radio" value="2" /><label for="q12_2">TS</label></div>
+                        <div class="option"><input id="q12_3" name="q12" type="radio" value="3" /><label for="q12_3">N</label></div>
+                        <div class="option"><input id="q12_4" name="q12" type="radio" value="4" /><label for="q12_4">S</label></div>
+                        <div class="option"><input id="q12_5" name="q12" type="radio" value="5" /><label for="q12_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Pengawasan Etis</div>
+                <div class="question">
+                    <p>13. Sekolah memiliki kebijakan mengenai integritas akademik dan sanksi terkait penyalahgunaan AI (seperti plagiarisme).</p>
+                    <div class="options">
+                        <div class="option"><input id="q13_1" name="q13" type="radio" value="1" /><label for="q13_1">STS</label></div>
+                        <div class="option"><input id="q13_2" name="q13" type="radio" value="2" /><label for="q13_2">TS</label></div>
+                        <div class="option"><input id="q13_3" name="q13" type="radio" value="3" /><label for="q13_3">N</label></div>
+                        <div class="option"><input id="q13_4" name="q13" type="radio" value="4" /><label for="q13_4">S</label></div>
+                        <div class="option"><input id="q13_5" name="q13" type="radio" value="5" /><label for="q13_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Dukungan Pengembangan SDM</h2>
+                <p class="desc">Menilai sejauh mana sekolah mendukung pengembangan kompetensi guru dalam literasi digital dan AI.</p>
+
+                <div class="sub-title">Pelatihan</div>
+                <div class="question">
+                    <p>14. Sekolah memfasilitasi pelatihan AI yang spesifik dikaitkan dengan metode pengajaran.</p>
+                    <div class="options">
+                        <div class="option"><input id="q14_1" name="q14" type="radio" value="1" /><label for="q14_1">STS</label></div>
+                        <div class="option"><input id="q14_2" name="q14" type="radio" value="2" /><label for="q14_2">TS</label></div>
+                        <div class="option"><input id="q14_3" name="q14" type="radio" value="3" /><label for="q14_3">N</label></div>
+                        <div class="option"><input id="q14_4" name="q14" type="radio" value="4" /><label for="q14_4">S</label></div>
+                        <div class="option"><input id="q14_5" name="q14" type="radio" value="5" /><label for="q14_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="question">
+                    <p>15. Sekolah memberikan dispensasi bagi guru untuk mengikuti program peningkatan kompetensi digital.</p>
+                    <div class="options">
+                        <div class="option"><input id="q15_1" name="q15" type="radio" value="1" /><label for="q15_1">STS</label></div>
+                        <div class="option"><input id="q15_2" name="q15" type="radio" value="2" /><label for="q15_2">TS</label></div>
+                        <div class="option"><input id="q15_3" name="q15" type="radio" value="3" /><label for="q15_3">N</label></div>
+                        <div class="option"><input id="q15_4" name="q15" type="radio" value="4" /><label for="q15_4">S</label></div>
+                        <div class="option"><input id="q15_5" name="q15" type="radio" value="5" /><label for="q15_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Praktik dan Akses</div>
+                <div class="question">
+                    <p>16. Sekolah menyediakan modul panduan AI atau literatur digital yang dapat diakses guru untuk belajar mandiri.</p>
+                    <div class="options">
+                        <div class="option"><input id="q16_1" name="q16" type="radio" value="1" /><label for="q16_1">STS</label></div>
+                        <div class="option"><input id="q16_2" name="q16" type="radio" value="2" /><label for="q16_2">TS</label></div>
+                        <div class="option"><input id="q16_3" name="q16" type="radio" value="3" /><label for="q16_3">N</label></div>
+                        <div class="option"><input id="q16_4" name="q16" type="radio" value="4" /><label for="q16_4">S</label></div>
+                        <div class="option"><input id="q16_5" name="q16" type="radio" value="5" /><label for="q16_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="question">
+                    <p>17. Pihak sekolah memberikan kesempatan bagi guru untuk bereksperimen menciptakan media ajar berbasis AI.</p>
+                    <div class="options">
+                        <div class="option"><input id="q17_1" name="q17" type="radio" value="1" /><label for="q17_1">STS</label></div>
+                        <div class="option"><input id="q17_2" name="q17" type="radio" value="2" /><label for="q17_2">TS</label></div>
+                        <div class="option"><input id="q17_3" name="q17" type="radio" value="3" /><label for="q17_3">N</label></div>
+                        <div class="option"><input id="q17_4" name="q17" type="radio" value="4" /><label for="q17_4">S</label></div>
+                        <div class="option"><input id="q17_5" name="q17" type="radio" value="5" /><label for="q17_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Pandangan Strategis Kebijakan Sekolah</h2>
+                <p class="desc">Menilai arah strategis dan kebijakan etis sekolah dalam mengelola teknologi digital dan AI.</p>
+
+                <div class="sub-title">Visi</div>
+                <div class="question">
+                    <p>18. Visi sekolah secara eksplisit memosisikan teknologi digital/AI sebagai elemen transformatif pembelajaran.</p>
+                    <div class="options">
+                        <div class="option"><input id="q18_1" name="q18" type="radio" value="1" /><label for="q18_1">STS</label></div>
+                        <div class="option"><input id="q18_2" name="q18" type="radio" value="2" /><label for="q18_2">TS</label></div>
+                        <div class="option"><input id="q18_3" name="q18" type="radio" value="3" /><label for="q18_3">N</label></div>
+                        <div class="option"><input id="q18_4" name="q18" type="radio" value="4" /><label for="q18_4">S</label></div>
+                        <div class="option"><input id="q18_5" name="q18" type="radio" value="5" /><label for="q18_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Regulasi dan Penyelarasan</div>
+                <div class="question">
+                    <p>19. Sekolah memiliki kebijakan tertulis (blueprint) yang mengatur batasan etis, perlindungan privasi data siswa, dan kekayaan intelektual dalam penggunaan AI.</p>
+                    <div class="options">
+                        <div class="option"><input id="q19_1" name="q19" type="radio" value="1" /><label for="q19_1">STS</label></div>
+                        <div class="option"><input id="q19_2" name="q19" type="radio" value="2" /><label for="q19_2">TS</label></div>
+                        <div class="option"><input id="q19_3" name="q19" type="radio" value="3" /><label for="q19_3">N</label></div>
+                        <div class="option"><input id="q19_4" name="q19" type="radio" value="4" /><label for="q19_4">S</label></div>
+                        <div class="option"><input id="q19_5" name="q19" type="radio" value="5" /><label for="q19_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="question">
+                    <p>20. Sekolah aktif melakukan sosialisasi orang tua untuk menyamakan persepsi mengenai urgensi dan keamanan AI dalam belajar.</p>
+                    <div class="options">
+                        <div class="option"><input id="q20_1" name="q20" type="radio" value="1" /><label for="q20_1">STS</label></div>
+                        <div class="option"><input id="q20_2" name="q20" type="radio" value="2" /><label for="q20_2">TS</label></div>
+                        <div class="option"><input id="q20_3" name="q20" type="radio" value="3" /><label for="q20_3">N</label></div>
+                        <div class="option"><input id="q20_4" name="q20" type="radio" value="4" /><label for="q20_4">S</label></div>
+                        <div class="option"><input id="q20_5" name="q20" type="radio" value="5" /><label for="q20_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="sub-title">Otonomi Pengembangan Kurikulum</div>
+                <div class="question">
+                    <p>21. Sekolah memberikan fleksibilitas bagi rumpun mata pelajaran (MGMP sekolah) untuk memodifikasi perangkat ajar agar adaptif terhadap AI.</p>
+                    <div class="options">
+                        <div class="option"><input id="q21_1" name="q21" type="radio" value="1" /><label for="q21_1">STS</label></div>
+                        <div class="option"><input id="q21_2" name="q21" type="radio" value="2" /><label for="q21_2">TS</label></div>
+                        <div class="option"><input id="q21_3" name="q21" type="radio" value="3" /><label for="q21_3">N</label></div>
+                        <div class="option"><input id="q21_4" name="q21" type="radio" value="4" /><label for="q21_4">S</label></div>
+                        <div class="option"><input id="q21_5" name="q21" type="radio" value="5" /><label for="q21_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+
+                <div class="question">
+                    <p>22. Sekolah memiliki rencana kemitraan dengan pihak eksternal (universitas, industri teknologi, atau dinas) guna mendukung pembelajaran berbasis teknologi digital/AI.</p>
+                    <div class="options">
+                        <div class="option"><input id="q22_1" name="q22" type="radio" value="1" /><label for="q22_1">STS</label></div>
+                        <div class="option"><input id="q22_2" name="q22" type="radio" value="2" /><label for="q22_2">TS</label></div>
+                        <div class="option"><input id="q22_3" name="q22" type="radio" value="3" /><label for="q22_3">N</label></div>
+                        <div class="option"><input id="q22_4" name="q22" type="radio" value="4" /><label for="q22_4">S</label></div>
+                        <div class="option"><input id="q22_5" name="q22" type="radio" value="5" /><label for="q22_5">SS</label></div>
+                    </div>
+                    <div class="legend"><span>STS = Sangat Tidak Setuju</span><span>TS = Tidak Setuju</span><span>N = Netral</span><span>S = Setuju</span><span>SS = Sangat Setuju</span></div>
+                </div>
+            </div>
+
+            <div class="submit-area">
+                <button id="submitBtn" type="submit">Kirim Jawaban</button>
+            </div>
+            <div class="footer">
+                © 2026 - Kuesioner Sekolah
+            </div>
+        </div>
+    </form>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <script>
+        const form = document.getElementById("kuesionerForm");
+        const iframe = document.getElementById("hidden_iframe");
+        const submitBtn = document.getElementById("submitBtn");
+        let isSubmitting = false;
+
+        form.addEventListener("submit", function (event) {
+            const nama = document.getElementById("nama").value.trim();
+            if (!nama) {
+                alert("Nama wajib diisi");
+                event.preventDefault();
+                return;
+            }
+
+            const sekolah = document.getElementById("asal_sekolah").value.trim();
+            if (!sekolah) {
+                alert("Asal sekolah wajib diisi");
+                event.preventDefault();
+                return;
+            }
+
+            const totalQuestions = document.querySelectorAll('.question').length;
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    alert(`Jawaban nomor ${i} wajib dipilih`);
+                    event.preventDefault();
+                    return;
+                }
+            }
+
+            isSubmitting = true;
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Mengirim...";
+        });
+
+        iframe.addEventListener("load", function () {
+            if (!isSubmitting) return;
+            isSubmitting = false;
+            alert("Jawaban berhasil disimpan!");
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>
